@@ -105,12 +105,23 @@ namespace Zad_2
             dach_otwarty = false;
         }
         //Konstruktor parametryczny:
-        public Kabriolet(string _marka, float _poj_baku, float _predkosc_max, double _zuzycie_paliwa)
+        public Kabriolet(string _marka, float _poj_baku, float _predkosc_max, double _zuzycie_paliwa, bool _dach_otwarty)
         {
             marka = _marka;
             poj_baku = _poj_baku;
             predkosc_max = _predkosc_max;
             zuzycie_paliwa = _zuzycie_paliwa;
+            dach_otwarty = _dach_otwarty;
+        }
+        //Metody klasy:
+        public bool Otworz_dach(bool dach_otwarty)
+        {
+            return true;
+        }
+
+        public bool Zamknij_dach(bool dach_otwarty)
+        {
+            return false;
         }
 
     }
