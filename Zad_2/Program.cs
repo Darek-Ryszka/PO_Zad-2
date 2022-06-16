@@ -27,7 +27,22 @@ namespace Zad_2
             zuzycie_paliwa = _zuzycie_paliwa;
         }
 
+        public float Jedz(float jakSzybko, float jakDaleko)
+        {
+            if (jakSzybko <= predkosc_max)
+            {
+                Console.WriteLine("Samochod pojedzie z predkoscia: " + jakSzybko + " km/h");
+            }
+            else
+            {
+                Console.WriteLine("Podana predkosc przekracza maksymalna predkosc pojazdu, wyznoszaca: " + predkosc_max + " Podaj prawidlowa predkosc.");
+            }
 
+
+
+
+            return 0;
+        }
 
     }
 
