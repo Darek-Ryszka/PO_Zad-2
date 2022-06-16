@@ -59,11 +59,32 @@ namespace Zad_2
             float Tankowania = PotrzebnePaliwo / poj_baku;
             return (Tankowania);
         }
+        //Wlasciwosci klasy:
+        public string Marka
+        {
+            get { return marka; }
+            set { marka = value; }
+        }
+        public float PojemnoscBaku
+        {
+            get { return poj_baku; }
+            set { poj_baku = value; }
+        }
+        public float PredkoscMax
+        {
+            get { return predkosc_max; }
+            set { predkosc_max = value; }
+        }
+        public float ZuzyciePaliwa
+        {
+            get { return zuzycie_paliwa; }
+            set { zuzycie_paliwa = value; }
+        }
     }
 
 
 
-        class Program
+    class Program
     {
         static void Main(string[] args)
         {
