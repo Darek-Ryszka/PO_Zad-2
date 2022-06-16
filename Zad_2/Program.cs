@@ -52,6 +52,13 @@ namespace Zad_2
             }
         }
 
+        public float Tankowanie(float jakDaleko)
+        {
+            float Dystans100 = jakDaleko / 100;
+            float PotrzebnePaliwo = zuzycie_paliwa * Dystans100;
+            float Tankowania = PotrzebnePaliwo / poj_baku;
+            return (Tankowania);
+        }
     }
 
 
