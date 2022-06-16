@@ -36,7 +36,7 @@ namespace Zad_2
             }
             else
             {
-                Console.WriteLine("Podana predkosc przekracza maksymalna predkosc pojazdu, wyznoszaca: " + predkosc_max + " Podaj prawidlowa predkosc.");
+                Console.WriteLine("Podana predkosc przekracza maksymalna predkosc pojazdu wynoszaca: " + predkosc_max + " Podaj prawidlowa predkosc.");
             }
 
         }
@@ -86,12 +86,43 @@ namespace Zad_2
         }
     }
 
+    public class Kabriolet : Samochod
+    {
+        private string marka;
+        private float poj_baku;
+        private float predkosc_max;
+        private double zuzycie_paliwa;
+        private bool dach_otwarty;
+
+
+        //Konstruktor domyslny:
+        public Kabriolet()
+        {
+            marka = "nieznana";
+            poj_baku = 0;
+            predkosc_max = 0;
+            zuzycie_paliwa = 0;
+            dach_otwarty = false;
+        }
+        //Konstruktor parametryczny:
+        public Kabriolet(string _marka, float _poj_baku, float _predkosc_max, double _zuzycie_paliwa)
+        {
+            marka = _marka;
+            poj_baku = _poj_baku;
+            predkosc_max = _predkosc_max;
+            zuzycie_paliwa = _zuzycie_paliwa;
+        }
+
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            Samochod s1 = new Samochod("Peugeot", 50, 180, 10.5);
-            s1.Jedz(100, 600);
+            Samochod s1 = new Samochod("Peugeot", 50, 180, 5.5);
+            s1.Jedz(200, 910);
+
+
         }
     }
 }
