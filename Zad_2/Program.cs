@@ -10,7 +10,7 @@ namespace Zad_2
         private float zuzycie_paliwa;
 
 
-
+        //Konstruktor domyslny:
         public Samochod()
         {
             marka = "nieznana";
@@ -18,7 +18,7 @@ namespace Zad_2
             predkosc_max = 0;
             zuzycie_paliwa = 0;
         }
-
+        //Konstruktor parametryczny:
         public Samochod(string _marka, float _poj_baku, float _predkosc_max, float _zuzycie_paliwa)
         {
             marka = _marka;
@@ -26,10 +26,10 @@ namespace Zad_2
             predkosc_max = _predkosc_max;
             zuzycie_paliwa = _zuzycie_paliwa;
         }
-
-        public float Jedz(float jakSzybko, float jakDaleko)
+        //Metody klasy:
+        public void Jedz(float jakSzybko, float jakDaleko)
         {
-            if (jakSzybko <= predkosc_max)
+            if (Predkosc(jakSzybko) == true)
             {
                 Console.WriteLine("Samochod pojedzie z predkoscia: " + jakSzybko + " km/h");
             }
@@ -38,28 +38,21 @@ namespace Zad_2
                 Console.WriteLine("Podana predkosc przekracza maksymalna predkosc pojazdu, wyznoszaca: " + predkosc_max + " Podaj prawidlowa predkosc.");
             }
 
+        }
 
-
-
-            return 0;
+        public bool Predkosc(float jakSzybko)
+        {
+            if (jakSzybko <= predkosc_max)
+            {
+                return(true);
+            }
+            else
+            {
+                return (false);
+            }
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
