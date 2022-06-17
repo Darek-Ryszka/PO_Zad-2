@@ -2,9 +2,9 @@
 
 namespace Zad_2
 {
-    public class Samochod
+    public class Samochod //klasa bazowa
     {
-        private string marka;
+        private string marka; 
         private float poj_baku;
         private float predkosc_max;
         private double zuzycie_paliwa;
@@ -27,7 +27,7 @@ namespace Zad_2
             zuzycie_paliwa = _zuzycie_paliwa;
         }
         //Metody klasy:
-        public void Jedz(float jakSzybko, float jakDaleko)
+        public virtual void Jedz(float jakSzybko, float jakDaleko)
         {
             if (Predkosc(jakSzybko) == true)
             {
@@ -38,10 +38,9 @@ namespace Zad_2
             {
                 Console.WriteLine("Podana predkosc przekracza maksymalna predkosc pojazdu wynoszaca: " + predkosc_max + " Podaj prawidlowa predkosc.");
             }
-
         }
 
-        public bool Predkosc(float jakSzybko)
+        public virtual bool Predkosc(float jakSzybko)
         {
             if (jakSzybko <= predkosc_max)
             {
@@ -53,7 +52,7 @@ namespace Zad_2
             }
         }
 
-        public double Tankowanie(float jakDaleko)
+        public virtual double Tankowanie(float jakDaleko)
         {
             float Dystans100 = jakDaleko / 100;
             double PotrzebnePaliwo = zuzycie_paliwa * Dystans100;
@@ -86,54 +85,92 @@ namespace Zad_2
         }
     }
 
-    public class Kabriolet : Samochod
-    {
-        private string marka;
-        private float poj_baku;
-        private float predkosc_max;
-        private double zuzycie_paliwa;
+    public class Kabriolet : Samochod //klasa pochodna
+    {   
         private bool dach_otwarty;
 
-
+         
         //Konstruktor domyslny:
         public Kabriolet()
         {
-            marka = "nieznana";
-            poj_baku = 0;
-            predkosc_max = 0;
-            zuzycie_paliwa = 0;
             dach_otwarty = false;
         }
         //Konstruktor parametryczny:
-        public Kabriolet(string _marka, float _poj_baku, float _predkosc_max, double _zuzycie_paliwa, bool _dach_otwarty)
+        public Kabriolet(string _marka, float _poj_baku, float _predkosc_max, double _zuzycie_paliwa, bool _dach_otwarty):
+            base(_marka, _poj_baku, _predkosc_max, _zuzycie_paliwa)
         {
-            marka = _marka;
-            poj_baku = _poj_baku;
-            predkosc_max = _predkosc_max;
-            zuzycie_paliwa = _zuzycie_paliwa;
             dach_otwarty = _dach_otwarty;
         }
         //Metody klasy:
-        public bool Otworz_dach(bool dach_otwarty)
+        public bool Otworz_dach()
         {
-            return true;
+            return dach_otwarty = true;
         }
 
-        public bool Zamknij_dach(bool dach_otwarty)
+        public bool Zamknij_dach()
         {
-            return false;
+            return dach_otwarty = false;
+        }
+        
+        public override void Jedz(float jakSzybko, float jakDaleko)
+        {
+            if (Predkosc(jakSzybko) == true)
+            {
+                Console.WriteLine("Samochod pojedzie z predkoscia: " + jakSzybko + " km/h");
+                if (dach_otwarty == true)
+                {
+                    Console.WriteLine("Samochod z otwartym dachem bedzie musial tankowac " + Tankowanie(jakDaleko) * 1.15 + " razy");
+                }
+                if (dach_otwarty == false)
+                {
+                    Console.WriteLine("Samochod z zamkniętym dachem bedzie musial tankowac " + Tankowanie(jakDaleko) + " razy");
+                }               
+            }
+            else
+            {
+                Console.WriteLine("Podana predkosc przekracza maksymalna predkosc pojazdu wynoszaca: " + PredkoscMax + " Podaj prawidlowa predkosc.");
+            }
+        }
+        /*
+        //Wlasciwosci klasy:      
+        new public string Marka
+        {
+            get { return marka; }
+            set { marka = value; }
         }
 
+        new public float PojemnoscBaku
+        {
+            get { return poj_baku; }
+            set { poj_baku = value; }
+        }
+
+        new public float PredkoscMax
+        {
+            get { return predkosc_max; }
+            set { predkosc_max = value; }
+        }
+
+        new public double ZuzyciePaliwa
+        {
+            get { return zuzycie_paliwa; }
+            set { zuzycie_paliwa = value; }
+        }
+        public bool DachOtwarty
+        {
+            get { return dach_otwarty; }
+            set { dach_otwarty = value; }
+        }
+        */
     }
-
     class Program
     {
         static void Main(string[] args)
-        {
-            Samochod s1 = new Samochod("Peugeot", 50, 180, 5.5);
-            s1.Jedz(200, 910);
+        {           
+            Samochod s1 = new Samochod("Peugeot", 50, 180, 5.5);        //Samochod bazowy do testow
+            s1.Jedz(120, 910);
 
-
+            
         }
     }
 }
