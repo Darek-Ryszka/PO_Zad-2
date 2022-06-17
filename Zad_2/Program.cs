@@ -170,7 +170,18 @@ namespace Zad_2
             Samochod s1 = new Samochod("Peugeot", 50, 180, 5.5);        //Samochod bazowy do testow
             s1.Jedz(120, 910);
 
-            
+            Samochod s2 = new Samochod("Peugeot", 50, 180, 6.325);      //Zwiekszenie spalania samochodu
+            s2.Jedz(120, 910);
+
+            Kabriolet c1 = new Kabriolet("Fiat", 50, 180, 5.5, false);  //Kabriolet o parametrach identycznych jak samochod testowy
+            c1.Otworz_dach();                                           //Otwarcie dachu i zwiekszenie spalania
+            c1.Jedz(120, 910);
+
+            c1.Zamknij_dach();                                          //Zamkniecie dachu i zmniejszenie spalania
+            c1.Jedz(120, 910);
+
+            Kabriolet c2 = new Kabriolet("Fiat", 50, 180, 6.3, false);  //Kabriolet numer 2  
+            c2.Jedz(200, 910);                                          //Proba przekroczenia maksymalnej predkosci
         }
     }
 }
