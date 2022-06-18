@@ -27,7 +27,7 @@ namespace Zad_2
             zuzycie_paliwa = _zuzycie_paliwa;
         }
         //Metody klasy:
-        public virtual void Jedz(float jakSzybko, float jakDaleko)
+        public virtual void Jedz(float jakSzybko, float jakDaleko) //Metoda odpowiedzialna za wyswietlenie informacji o predkosci poruszania sie pojazdu i ilosc niezbednych tankowan na dlugosci trasy podanej przez uzytkownika
         {
             if (Predkosc(jakSzybko) == true)
             {
@@ -36,11 +36,11 @@ namespace Zad_2
             }
             else
             {
-                Console.WriteLine("Podana predkosc przekracza maksymalna predkosc pojazdu wynoszaca: " + predkosc_max + " Podaj prawidlowa predkosc.");
+                Console.WriteLine("Podana predkosc przekracza maksymalna predkosc pojazdu wynoszaca: " + predkosc_max + "km/h. Podaj prawidlowa predkosc.");
             }
         }
 
-        public virtual bool Predkosc(float jakSzybko)
+        public virtual bool Predkosc(float jakSzybko) //Metoda odpowiedzialna za prawdzenie czy podana przez uzytkowanika predkosc pojazdu nieprzekracza jego fabrycznej maksymalnej predkosci
         {
             if (jakSzybko <= predkosc_max)
             {
@@ -52,7 +52,7 @@ namespace Zad_2
             }
         }
 
-        public virtual double Tankowanie(float jakDaleko)
+        public virtual double Tankowanie(float jakDaleko) //Metoda odpowiedzialna za obliczenie ilosc niezbednych tankowan na podanej trasie
         {
             float Dystans100 = jakDaleko / 100;
             double PotrzebnePaliwo = zuzycie_paliwa * Dystans100;
@@ -116,52 +116,27 @@ namespace Zad_2
         {
             if (Predkosc(jakSzybko) == true)
             {
-                Console.WriteLine("Samochod pojedzie z predkoscia: " + jakSzybko + " km/h");
+                Console.WriteLine("Kabriolet pojedzie z predkoscia: " + jakSzybko + " km/h");
                 if (dach_otwarty == true)
                 {
-                    Console.WriteLine("Samochod z otwartym dachem bedzie musial tankowac " + Tankowanie(jakDaleko) * 1.15 + " razy");
+                    Console.WriteLine("Kabriolet z otwartym dachem bedzie musial tankowac " + Tankowanie(jakDaleko) * 1.15 + " razy"); //Zwiekszenie spalania kabrioletu z otwartym dachem o 15%, modyfikacja metody Jedz tak by uwzgledniala zwiekszenie spalania w koncowym komunikacie                
                 }
                 if (dach_otwarty == false)
                 {
-                    Console.WriteLine("Samochod z zamkniętym dachem bedzie musial tankowac " + Tankowanie(jakDaleko) + " razy");
+                    Console.WriteLine("Kabriolet z zamkniętym dachem bedzie musial tankowac " + Tankowanie(jakDaleko) + " razy");
                 }               
             }
             else
             {
-                Console.WriteLine("Podana predkosc przekracza maksymalna predkosc pojazdu wynoszaca: " + PredkoscMax + " Podaj prawidlowa predkosc.");
+                Console.WriteLine("Podana predkosc przekracza maksymalna predkosc pojazdu wynoszaca: " + PredkoscMax + "km/h. Podaj prawidlowa predkosc.");
             }
         }
-        /*
-        //Wlasciwosci klasy:      
-        new public string Marka
-        {
-            get { return marka; }
-            set { marka = value; }
-        }
-
-        new public float PojemnoscBaku
-        {
-            get { return poj_baku; }
-            set { poj_baku = value; }
-        }
-
-        new public float PredkoscMax
-        {
-            get { return predkosc_max; }
-            set { predkosc_max = value; }
-        }
-
-        new public double ZuzyciePaliwa
-        {
-            get { return zuzycie_paliwa; }
-            set { zuzycie_paliwa = value; }
-        }
+        //Wlasciwosci klasy:
         public bool DachOtwarty
         {
             get { return dach_otwarty; }
             set { dach_otwarty = value; }
-        }
-        */
+        }       
     }
     class Program
     {
@@ -169,19 +144,25 @@ namespace Zad_2
         {           
             Samochod s1 = new Samochod("Peugeot", 50, 180, 5.5);        //Samochod bazowy do testow
             s1.Jedz(120, 910);
+            Console.WriteLine("");
 
-            Samochod s2 = new Samochod("Peugeot", 50, 180, 6.325);      //Zwiekszenie spalania samochodu
+            Samochod s2 = new Samochod("Peugeot", 50, 180, 6.325);      //Zwiekszenie spalania samochodu o 15%
             s2.Jedz(120, 910);
+            Console.WriteLine("");
 
-            Kabriolet c1 = new Kabriolet("Fiat", 50, 180, 5.5, false);  //Kabriolet o parametrach identycznych jak samochod testowy
+            Kabriolet c1 = new Kabriolet("Fiat", 50, 180, 5.5, false);  //Kabriolet numer 1 o parametrach identycznych jak samochod testowy
             c1.Otworz_dach();                                           //Otwarcie dachu i zwiekszenie spalania
             c1.Jedz(120, 910);
+            Console.WriteLine("");
 
             c1.Zamknij_dach();                                          //Zamkniecie dachu i zmniejszenie spalania
             c1.Jedz(120, 910);
+            Console.WriteLine("");
 
             Kabriolet c2 = new Kabriolet("Fiat", 50, 180, 6.3, false);  //Kabriolet numer 2  
             c2.Jedz(200, 910);                                          //Proba przekroczenia maksymalnej predkosci
+
+            Console.ReadKey();
         }
     }
 }
