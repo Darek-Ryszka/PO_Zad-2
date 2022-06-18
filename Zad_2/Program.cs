@@ -112,14 +112,16 @@ namespace Zad_2
             return dach_otwarty = false;
         }
         
-        public override void Jedz(float jakSzybko, float jakDaleko)
+        public override void Jedz(float jakSzybko, float jakDaleko) //Metoda odpowiedzialna za wyswietlenie informacji o predkosci poruszania sie pojazdu i ilosc niezbednych tankowan na dlugosci trasy podanej przez uzytkownika
         {
             if (Predkosc(jakSzybko) == true)
             {
                 Console.WriteLine("Kabriolet pojedzie z predkoscia: " + jakSzybko + " km/h");
                 if (dach_otwarty == true)
                 {
-                    Console.WriteLine("Kabriolet z otwartym dachem bedzie musial tankowac " + Math.Round(Tankowanie(jakDaleko) * 1.15, 2) + " raz/razy"); //Zwiekszenie spalania kabrioletu z otwartym dachem o 15%, modyfikacja metody Jedz tak by uwzgledniala zwiekszenie spalania w koncowym komunikacie, zaokraglenie wyniku po uwzglednieniu zwiekszenia spalania do dwoch miejsc po przecinku                
+                    Console.WriteLine("Kabriolet z otwartym dachem bedzie musial tankowac " + Math.Round(Tankowanie(jakDaleko) * 1.15, 2) + " raz/razy"); //Zwiekszenie spalania kabrioletu z otwartym dachem o 15%,                 
+                                                                                                                                                          //modyfikacja metody Jedz tak by uwzgledniala zwiekszenie spalania w koncowym komunikacie,  
+                                                                                                                                                          //zaokraglenie wyniku po uwzglednieniu zwiekszenia spalania do dwoch miejsc po przecinku
                 }
                 if (dach_otwarty == false)
                 {
