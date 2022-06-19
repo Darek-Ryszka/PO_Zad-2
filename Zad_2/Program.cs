@@ -40,7 +40,7 @@ namespace Zad_2
             }
         }
 
-        public virtual bool Predkosc(float jakSzybko) //Metoda odpowiedzialna za prawdzenie czy podana przez uzytkowanika predkosc pojazdu nieprzekracza jego fabrycznej maksymalnej predkosci
+        public virtual bool Predkosc(float jakSzybko) //Metoda odpowiedzialna za prawdzenie czy podana przez uzytkowanika predkosc pojazdu nie przekracza jego fabrycznej maksymalnej predkosci
         {
             if (jakSzybko <= predkosc_max)
             {
@@ -97,7 +97,7 @@ namespace Zad_2
         }
         //Konstruktor parametryczny:
         public Kabriolet(string _marka, float _poj_baku, float _predkosc_max, double _zuzycie_paliwa, bool _dach_otwarty):
-            base(_marka, _poj_baku, _predkosc_max, _zuzycie_paliwa)
+            base(_marka, _poj_baku, _predkosc_max, _zuzycie_paliwa) //Dziedziczenie po metodzie bazowej
         {
             dach_otwarty = _dach_otwarty;
         }
